@@ -1,5 +1,5 @@
 {
-  "name": "recipes-users",
+  "name": "whocooks-users",
   "description": "The models and resources associated with users.",
 
   "models": {

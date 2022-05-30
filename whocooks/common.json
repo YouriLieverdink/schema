@@ -1,6 +1,6 @@
 {
-  "name": "recipes-common",
-  "description": "Common enums and models between the services",
+  "name": "whocooks-common",
+  "description": "Common enums and models between the services of whocooks.",
 
   "models": {
     "error": {
