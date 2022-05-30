@@ -1,0 +1,32 @@
+{
+  "name": "recipes-users",
+  "description": "The models and resources associated with users.",
+
+  "models": {
+    "user": {
+      "description": "An authenticated user within the system.",
+      "fields": [
+        { "name": "uuid", "type": "uuid" },
+        { "name": "email", "type": "string" }
+      ]
+    }
+  },
+
+  "resources": {
+    "user": {
+      "path": "/users",
+      "description": "Endpoint for managing the user resource.",
+      "operations": [
+        {
+          "method": "GET",
+          "path": "/me",
+          "description": "Show the current user.",
+          "responses": {
+            "200": { "type": "user" },
+            "401": { "type": "unit" }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "name": "recipes-recipes",
+  "description": "The models and resources associated with recipes.",
+
+  "imports": [
+    {
+      "uri": "https://app.apibuilder.io/iruoy/recipes-common/0.0.1-dev/service.json"
+    }
+  ],
+
+  "models": {
+    "recipe": {
+      "description": "A recipe created by the user.",
+      "fields": [
+        { "name": "uuid", "type": "uuid" },
+        { "name": "title", "type": "string" }
+      ]
+    },
+    "recipe_form": {
+      "description": "Used to create a recipe",
+      "fields": [{ "name": "title", "type": "string" }]
+    }
+  },
+
+  "resources": {
+    "recipe": {
+      "path": "/recipes",
+      "description": "Endpoint for managing the recipe resource.",
+      "operations": [
+        {
+          "method": "GET",
+          "description": "List all recipes.",
+          "responses": {
+            "200": { "type": "[recipe]" },
+            "401": { "type": "unit" }
+          }
+        },
+        {
+          "method": "POST",
+          "description": "Add a recipe.",
+          "body": { "type": "recipe_form" },
+          "responses": {
+            "200": { "type": "recipe" },
+            "400": { "type": "iruoy.recipes.common.v0.models.error" },
+            "401": { "type": "unit" }
+          }
+        },
+        {
+          "method": "PUT",
+          "description": "Edit a recipe.",
+          "body": { "type": "recipe_form" },
+          "responses": {
+            "200": { "type": "recipe" },
+            "400": { "type": "iruoy.recipes.common.v0.models.error" },
+            "401": { "type": "unit" },
+            "404": { "type": "unit" }
+          }
+        },
+        {
+          "method": "DELETE",
+          "description": "Remove a recipe.",
+          "path": "/:id",
+          "responses": {
+            "204": { "type": "unit" },
+            "401": { "type": "unit" },
+            "404": { "type": "unit" }
+          }
+        }
+      ]
+    }
+  }
+}
