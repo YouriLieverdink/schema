@@ -4,7 +4,7 @@
 
   "imports": [
     {
-      "uri": "https://app.apibuilder.io/iruoy/whocooks-common/0.0.1-dev/service.json"
+      "uri": "https://app.apibuilder.io/iruoy/whocooks-common/0.0.3-dev/service.json"
     }
   ],
 
@@ -31,6 +31,21 @@
   },
 
   "resources": {
+    "iruoy.whocooks.common.v0.models.healthcheck": {
+      "path": "/_internal_",
+      "operations": [
+        {
+          "method": "GET",
+          "description": "Retrieve the status of the service.",
+          "path": "/healthcheck",
+          "responses": {
+            "200": { "type": "iruoy.whocooks.common.v0.models.healthcheck" },
+            "500": { "type": "iruoy.whocooks.common.v0.models.error" }
+          }
+        }
+      ]
+    },
+
     "recipe": {
       "path": "/recipes",
       "description": "Endpoint for managing the recipe resource.",
