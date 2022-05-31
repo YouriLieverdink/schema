@@ -8,6 +8,15 @@
       "fields": [
         { "name": "uuid", "type": "uuid" },
         { "name": "email", "type": "string" }
+      ],
+      "attributes": [
+        {
+          "name": "mysql",
+          "value": {
+            "pkey": "uuid",
+            "indexes": [{ "fields": ["email"] }]
+          }
+        }
       ]
     }
   },
