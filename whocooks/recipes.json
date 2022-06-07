@@ -12,16 +12,8 @@
     "recipe": {
       "description": "A recipe created by the user.",
       "fields": [
-        { "name": "uuid", "type": "uuid" },
+        { "name": "id", "type": "uuid" },
         { "name": "title", "type": "string" }
-      ],
-      "attributes": [
-        {
-          "name": "mysql",
-          "value": {
-            "pkey": "uuid"
-          }
-        }
       ]
     },
     "recipe_form": {
@@ -53,6 +45,10 @@
         {
           "method": "GET",
           "description": "List all recipes.",
+          "parameters": [
+            { "name": "skip", "type": "integer", "default": 0 },
+            { "name": "limit", "type": "integer", "default": 25 }
+          ],
           "responses": {
             "200": { "type": "[recipe]" },
             "401": { "type": "unit" }
@@ -71,6 +67,7 @@
         {
           "method": "PUT",
           "description": "Edit a recipe.",
+          "path": "/:id",
           "body": { "type": "recipe_form" },
           "responses": {
             "200": { "type": "recipe" },
