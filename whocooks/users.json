@@ -4,7 +4,7 @@
 
   "imports": [
     {
-      "uri": "https://app.apibuilder.io/iruoy/whocooks-common/0.0.3-dev/service.json"
+      "uri": "https://app.apibuilder.io/iruoy/whocooks-common/0.0.4-dev/service.json"
     }
   ],
 
@@ -15,7 +15,16 @@
         { "name": "id", "type": "uuid" },
         { "name": "email", "type": "string" }
       ]
-    }
+    },
+    "attributes": [
+      {
+        "name": "mongo",
+        "value": {
+          "_id": "id",
+          "indexes": ["email"]
+        }
+      }
+    ]
   },
 
   "resources": {

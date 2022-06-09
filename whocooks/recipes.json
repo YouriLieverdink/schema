@@ -4,7 +4,7 @@
 
   "imports": [
     {
-      "uri": "https://app.apibuilder.io/iruoy/whocooks-common/0.0.3-dev/service.json"
+      "uri": "https://app.apibuilder.io/iruoy/whocooks-common/0.0.4-dev/service.json"
     }
   ],
 
@@ -14,6 +14,14 @@
       "fields": [
         { "name": "id", "type": "uuid" },
         { "name": "title", "type": "string" }
+      ],
+      "attributes": [
+        {
+          "name": "mongo",
+          "value": {
+            "_id": "id"
+          }
+        }
       ]
     },
     "recipe_form": {
@@ -60,7 +68,9 @@
           "body": { "type": "recipe_form" },
           "responses": {
             "200": { "type": "recipe" },
-            "400": { "type": "iruoy.whocooks.common.v0.models.error" },
+            "400": {
+              "type": "[iruoy.whocooks.common.v0.models.validation_error]"
+            },
             "401": { "type": "unit" }
           }
         },
@@ -71,7 +81,9 @@
           "body": { "type": "recipe_form" },
           "responses": {
             "200": { "type": "recipe" },
-            "400": { "type": "iruoy.whocooks.common.v0.models.error" },
+            "400": {
+              "type": "[iruoy.whocooks.common.v0.models.validation_error]"
+            },
             "401": { "type": "unit" },
             "404": { "type": "unit" }
           }
