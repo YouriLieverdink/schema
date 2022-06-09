@@ -11,6 +11,14 @@
       ]
     },
 
+    "validation_error": {
+      "description": "Validation error message.",
+      "fields": [
+        { "name": "field", "type": "string" },
+        { "name": "errors", "type": "[string]" }
+      ]
+    },
+
     "healthcheck": {
       "description": "The status of a service in a given moment.",
       "fields": [{ "name": "status", "type": "string" }]
