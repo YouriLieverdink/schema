@@ -13,7 +13,10 @@
       "description": "A recipe created by the user.",
       "fields": [
         { "name": "id", "type": "uuid" },
-        { "name": "title", "type": "string" }
+        { "name": "title", "type": "string" },
+        { "name": "photo_url", "type": "string", "required": false },
+        { "name": "description", "type": "string", "required": false },
+        { "name": "ingredients", "type": "[string]" }
       ],
       "attributes": [
         {
@@ -26,7 +29,12 @@
     },
     "recipe_form": {
       "description": "Used to create a recipe",
-      "fields": [{ "name": "title", "type": "string" }]
+      "fields": [
+        { "name": "title", "type": "string" },
+        { "name": "photo_url", "type": "string", "required": false },
+        { "name": "description", "type": "string", "required": false },
+        { "name": "ingredients", "type": "[string]" }
+      ]
     }
   },
 
