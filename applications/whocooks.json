@@ -1,0 +1,104 @@
+{
+  "name": "whocooks",
+  "description": "Save recipes and share with family & friends.",
+
+  "imports": [
+    { "uri": "https://app.apibuilder.io/iruoy/common/0.0.1/service.json" }
+  ],
+
+  "models": {
+    "token": {
+      "fields": [
+        { "name": "token", "type": "string" },
+        { "name": "refresh_token", "type": "string" }
+      ],
+      "attributes": [
+        {
+          "name": "mongo",
+          "value": {
+            "_id": "id",
+            "indexes": ["token"],
+            "exclude": ["refresh_token"]
+          }
+        }
+      ]
+    },
+
+    "token_form": {
+      "fields": [
+        { "name": "email", "type": "string" },
+        { "name": "password", "type": "string" }
+      ]
+    },
+
+    "user": {
+      "fields": [
+        { "name": "id", "type": "uuid" },
+        { "name": "email", "type": "string" }
+      ],
+      "attributes": [
+        {
+          "name": "mongo",
+          "value": {
+            "_id": "id",
+            "indexes": ["email"]
+          }
+        }
+      ]
+    }
+  },
+
+  "resources": {
+    "nl.iruoy.common.v0.models.healthcheck": {
+      "path": "/_internal_",
+      "operations": [
+        {
+          "method": "GET",
+          "path": "/healthcheck",
+          "responses": {
+            "200": { "type": "nl.iruoy.common.v0.models.healthcheck" },
+            "422": { "type": "nl.iruoy.common.v0.models.error" }
+          }
+        }
+      ]
+    },
+
+    "token": {
+      "path": "/tokens",
+      "operations": [
+        {
+          "method": "POST",
+          "body": { "type": "token_form" },
+          "responses": {
+            "201": { "type": "token" },
+            "400": { "type": "unit" },
+            "401": { "type": "unit" }
+          }
+        },
+        {
+          "method": "PUT",
+          "body": { "type": "string" },
+          "responses": {
+            "200": { "type": "token" },
+            "400": { "type": "unit" },
+            "401": { "type": "unit" }
+          }
+        }
+      ]
+    },
+
+    "user": {
+      "path": "/users",
+      "operations": [
+        {
+          "method": "GET",
+          "path": "/me",
+          "responses": {
+            "200": { "type": "user" },
+            "401": { "type": "unit" }
+          }
+        }
+      ]
+    }
+  }
+}
