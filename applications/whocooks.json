@@ -3,7 +3,7 @@
   "description": "Save recipes and share with family & friends.",
 
   "imports": [
-    { "uri": "https://app.apibuilder.io/iruoy/common/0.0.1/service.json" }
+    { "uri": "https://app.apibuilder.io/iruoy/common/0.0.2/service.json" }
   ],
 
   "models": {
