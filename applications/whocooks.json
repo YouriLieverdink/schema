@@ -8,11 +8,12 @@
 
   "models": {
     "recipe": {
-      "description": "A recipe which can be scheduled",
       "fields": [
         { "name": "id", "type": "uuid" },
         { "name": "photo_url", "type": "string", "required": false },
-        { "name": "title", "type": "string" }
+        { "name": "title", "type": "string" },
+        { "name": "description", "type": "string", "required": false },
+        { "name": "ingredients", "type": "[ingredient]" }
       ],
       "attributes": [
         {
@@ -25,11 +26,19 @@
       ]
     },
 
+    "ingredient": {
+      "fields": [
+        { "name": "title", "type": "string" },
+        { "name": "amount", "type": "double" }
+      ]
+    },
+
     "recipe_form": {
-      "description": "Used to create or update a recipe",
       "fields": [
         { "name": "photo_url", "type": "string", "required": false },
-        { "name": "title", "type": "string" }
+        { "name": "title", "type": "string" },
+        { "name": "description", "type": "string", "required": false },
+        { "name": "ingredients", "type": "[ingredient]" }
       ]
     }
   },
