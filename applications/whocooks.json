@@ -29,7 +29,8 @@
     "ingredient": {
       "fields": [
         { "name": "title", "type": "string" },
-        { "name": "amount", "type": "double" }
+        { "name": "amount", "type": "double" },
+        { "name": "unit", "type": "string", "required": false }
       ]
     },
 
