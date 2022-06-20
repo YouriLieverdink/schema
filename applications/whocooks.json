@@ -129,15 +129,13 @@
       "operations": [
         {
           "method": "GET",
-          "path": "/:date",
           "parameters": [{ "name": "date", "type": "date-iso8601" }],
           "responses": {
-            "200": { "type": "[schedule]" }
+            "200": { "type": "schedule" }
           }
         },
         {
           "method": "PUT",
-          "path": "/:date",
           "parameters": [{ "name": "date", "type": "date-iso8601" }],
           "body": { "type": "schedule" },
           "responses": {
