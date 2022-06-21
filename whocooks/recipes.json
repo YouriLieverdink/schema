@@ -2,7 +2,9 @@
   "name": "recipes",
 
   "imports": [
-    { "uri": "https://app.apibuilder.io/iruoy/common/0.0.2/service.json" }
+    {
+      "uri": "https://app.apibuilder.io/iruoy/common/latest/service.json"
+    }
   ],
 
   "models": {
@@ -67,15 +69,17 @@
   },
 
   "resources": {
-    "nl.iruoy.common.v0.models.healthcheck": {
+    "nl.iruoy.common.models.healthcheck": {
       "path": "/_internal_",
       "operations": [
         {
           "method": "GET",
           "path": "/healthcheck",
           "responses": {
-            "200": { "type": "nl.iruoy.common.v0.models.healthcheck" },
-            "422": { "type": "nl.iruoy.common.v0.models.error" }
+            "200": {
+              "type": "nl.iruoy.common.models.healthcheck"
+            },
+            "422": { "type": "nl.iruoy.common.models.error" }
           }
         }
       ]
@@ -99,7 +103,9 @@
           "body": { "type": "recipe_form" },
           "responses": {
             "201": { "type": "recipe" },
-            "400": { "type": "nl.iruoy.common.v0.models.error" }
+            "400": {
+              "type": "nl.iruoy.common.models.error"
+            }
           }
         },
         {
@@ -108,7 +114,9 @@
           "body": { "type": "recipe_form" },
           "responses": {
             "200": { "type": "recipe" },
-            "400": { "type": "nl.iruoy.common.v0.models.error" },
+            "400": {
+              "type": "nl.iruoy.common.models.error"
+            },
             "404": { "type": "unit" }
           }
         },
