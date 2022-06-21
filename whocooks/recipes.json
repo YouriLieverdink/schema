@@ -1,0 +1,126 @@
+{
+  "name": "recipes",
+
+  "imports": [
+    { "uri": "https://app.apibuilder.io/iruoy/common/0.0.2/service.json" }
+  ],
+
+  "models": {
+    "ingredient": {
+      "fields": [
+        { "name": "title", "type": "string" },
+        { "name": "amount", "type": "double" },
+        { "name": "unit", "type": "string", "required": false }
+      ]
+    },
+
+    "recipe": {
+      "fields": [
+        { "name": "id", "type": "uuid" },
+        { "name": "photo_url", "type": "string", "required": false },
+        { "name": "title", "type": "string" },
+        { "name": "description", "type": "string", "required": false },
+        { "name": "ingredients", "type": "[ingredient]" }
+      ],
+      "attributes": [
+        {
+          "name": "mongo",
+          "value": {
+            "_id": "id",
+            "indexes": ["title"]
+          }
+        }
+      ]
+    },
+
+    "recipe_form": {
+      "fields": [
+        { "name": "photo_url", "type": "string", "required": false },
+        { "name": "title", "type": "string" },
+        { "name": "description", "type": "string", "required": false },
+        { "name": "ingredients", "type": "[ingredient]" }
+      ]
+    },
+
+    "recipe_upserted": {
+      "fields": [
+        { "name": "id", "type": "uuid" },
+        { "name": "timestamp", "type": "date-time-iso8601" },
+        { "name": "recipe", "type": "recipe" }
+      ]
+    },
+
+    "recipe_deleted": {
+      "fields": [
+        { "name": "id", "type": "uuid" },
+        { "name": "timestamp", "type": "date-time-iso8601" },
+        { "name": "recipe", "type": "recipe" }
+      ]
+    }
+  },
+
+  "unions": {
+    "recipe_event": {
+      "discriminator": "discriminator",
+      "types": [{ "type": "recipe_upserted" }, { "type": "recipe_deleted" }]
+    }
+  },
+
+  "resources": {
+    "nl.iruoy.common.v0.models.healthcheck": {
+      "path": "/_internal_",
+      "operations": [
+        {
+          "method": "GET",
+          "path": "/healthcheck",
+          "responses": {
+            "200": { "type": "nl.iruoy.common.v0.models.healthcheck" },
+            "422": { "type": "nl.iruoy.common.v0.models.error" }
+          }
+        }
+      ]
+    },
+
+    "recipe": {
+      "path": "/recipes",
+      "operations": [
+        {
+          "method": "GET",
+          "parameters": [
+            { "name": "limit", "type": "integer", "default": 100 },
+            { "name": "skip", "type": "integer", "default": 0 }
+          ],
+          "responses": {
+            "200": { "type": "[recipe]" }
+          }
+        },
+        {
+          "method": "POST",
+          "body": { "type": "recipe_form" },
+          "responses": {
+            "201": { "type": "recipe" },
+            "400": { "type": "nl.iruoy.common.v0.models.error" }
+          }
+        },
+        {
+          "method": "PUT",
+          "path": "/:id",
+          "body": { "type": "recipe_form" },
+          "responses": {
+            "200": { "type": "recipe" },
+            "400": { "type": "nl.iruoy.common.v0.models.error" },
+            "404": { "type": "unit" }
+          }
+        },
+        {
+          "method": "DELETE",
+          "path": "/:id",
+          "responses": {
+            "204": { "type": "unit" },
+            "404": { "type": "unit" }
+          }
+        }
+      ]
+    }
+  }
+}
