@@ -28,8 +28,7 @@
         {
           "name": "mongo",
           "value": {
-            "_id": "id",
-            "indexes": ["title"]
+            "_id": "id"
           }
         }
       ]
@@ -106,6 +105,14 @@
             "400": {
               "type": "nl.iruoy.common.models.error"
             }
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/:id",
+          "responses": {
+            "200": { "type": "recipe" },
+            "404": { "type": "unit" }
           }
         },
         {

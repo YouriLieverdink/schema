@@ -16,47 +16,17 @@
         { "name": "id", "type": "string" },
         { "name": "date", "type": "date-iso8601" },
         {
-          "name": "monday",
-          "type": "nl.iruoy.whocooks.recipes.models.recipe",
-          "required": false
+          "name": "recipes",
+          "type": "[nl.iruoy.whocooks.recipes.models.recipe]"
         },
-        {
-          "name": "tuesday",
-          "type": "nl.iruoy.whocooks.recipes.models.recipe",
-          "required": false
-        },
-        {
-          "name": "wednesday",
-          "type": "nl.iruoy.whocooks.recipes.models.recipe",
-          "required": false
-        },
-        {
-          "name": "thursday",
-          "type": "nl.iruoy.whocooks.recipes.models.recipe",
-          "required": false
-        },
-        {
-          "name": "friday",
-          "type": "nl.iruoy.whocooks.recipes.models.recipe",
-          "required": false
-        },
-        {
-          "name": "saturday",
-          "type": "nl.iruoy.whocooks.recipes.models.recipe",
-          "required": false
-        },
-        {
-          "name": "sunday",
-          "type": "nl.iruoy.whocooks.recipes.models.recipe",
-          "required": false
-        }
+        { "name": "days", "type": "[integer]" }
       ],
       "attributes": [
         {
           "name": "mongo",
           "value": {
             "_id": "id",
-            "indexes": ["date"]
+            "indexes": ["date", "recipes"]
           }
         }
       ]
@@ -66,40 +36,10 @@
       "fields": [
         { "name": "date", "type": "date-iso8601" },
         {
-          "name": "monday",
-          "type": "nl.iruoy.whocooks.recipes.models.recipe",
-          "required": false
+          "name": "recipes",
+          "type": "[nl.iruoy.whocooks.recipes.models.recipe]"
         },
-        {
-          "name": "tuesday",
-          "type": "nl.iruoy.whocooks.recipes.models.recipe",
-          "required": false
-        },
-        {
-          "name": "wednesday",
-          "type": "nl.iruoy.whocooks.recipes.models.recipe",
-          "required": false
-        },
-        {
-          "name": "thursday",
-          "type": "nl.iruoy.whocooks.recipes.models.recipe",
-          "required": false
-        },
-        {
-          "name": "friday",
-          "type": "nl.iruoy.whocooks.recipes.models.recipe",
-          "required": false
-        },
-        {
-          "name": "saturday",
-          "type": "nl.iruoy.whocooks.recipes.models.recipe",
-          "required": false
-        },
-        {
-          "name": "sunday",
-          "type": "nl.iruoy.whocooks.recipes.models.recipe",
-          "required": false
-        }
+        { "name": "days", "type": "[integer]" }
       ]
     }
   },
