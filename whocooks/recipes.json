@@ -68,7 +68,7 @@
   },
 
   "resources": {
-    "nl.iruoy.common.models.healthcheck": {
+    "nl.iruoy.common.v0.models.healthcheck": {
       "path": "/_internal_",
       "operations": [
         {
@@ -76,9 +76,9 @@
           "path": "/healthcheck",
           "responses": {
             "200": {
-              "type": "nl.iruoy.common.models.healthcheck"
+              "type": "nl.iruoy.common.v0.models.healthcheck"
             },
-            "422": { "type": "nl.iruoy.common.models.error" }
+            "422": { "type": "nl.iruoy.common.v0.models.error" }
           }
         }
       ]
@@ -103,7 +103,7 @@
           "responses": {
             "201": { "type": "recipe" },
             "400": {
-              "type": "nl.iruoy.common.models.error"
+              "type": "nl.iruoy.common.v0.models.error"
             }
           }
         },
@@ -122,7 +122,7 @@
           "responses": {
             "200": { "type": "recipe" },
             "400": {
-              "type": "nl.iruoy.common.models.error"
+              "type": "nl.iruoy.common.v0.models.error"
             },
             "404": { "type": "unit" }
           }

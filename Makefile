@@ -1,6 +1,5 @@
 # Base command
-current	= $$(git rev-parse --abbrev-ref HEAD | sed 's/\//-/g')-$$(git rev-parse HEAD | cut -c1-7)
-command = apibuilder upload $(1) $(2) ./$(1)/$(2).json  --version $(current)
+command = apibuilder upload $(1) $(2) ./$(1)/$(2).json  --silent
 
 release: release_iruoy release_whocooks
 
