@@ -1,5 +1,5 @@
 # Base command
-command = apibuilder upload $(1) $(2) ./$(1)/$(2).json  --silent
+command = apibuilder upload $(1) $(2) ./$(1)/$(2).json
 
 release: release_iruoy release_whocooks
 
