@@ -47,7 +47,8 @@
       "fields": [
         { "name": "id", "type": "uuid" },
         { "name": "timestamp", "type": "date-time-iso8601" },
-        { "name": "recipe", "type": "recipe" }
+        { "name": "previous", "type": "recipe", "required": false },
+        { "name": "current", "type": "recipe" }
       ]
     },
 
