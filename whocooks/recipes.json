@@ -21,14 +21,14 @@
         { "name": "id", "type": "uuid" },
         { "name": "photo_url", "type": "string", "required": false },
         { "name": "title", "type": "string" },
-        { "name": "description", "type": "string", "required": false },
-        { "name": "ingredients", "type": "[ingredient]" }
+        { "name": "description", "type": "string", "required": false }
       ],
       "attributes": [
         {
           "name": "mongo",
           "value": {
-            "_id": "id"
+            "_id": "id",
+            "indexes": ["title"]
           }
         }
       ]
@@ -38,8 +38,7 @@
       "fields": [
         { "name": "photo_url", "type": "string", "required": false },
         { "name": "title", "type": "string" },
-        { "name": "description", "type": "string", "required": false },
-        { "name": "ingredients", "type": "[ingredient]" }
+        { "name": "description", "type": "string", "required": false }
       ]
     },
 
@@ -91,6 +90,8 @@
         {
           "method": "GET",
           "parameters": [
+            { "name": "ids", "type": "[string]", "required": false },
+            { "name": "title", "type": "string", "required": false },
             { "name": "limit", "type": "integer", "default": 100 },
             { "name": "skip", "type": "integer", "default": 0 }
           ],

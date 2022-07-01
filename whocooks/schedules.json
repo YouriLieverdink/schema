@@ -19,7 +19,7 @@
           "name": "recipes",
           "type": "[nl.iruoy.whocooks.recipes.v0.models.recipe]"
         },
-        { "name": "days", "type": "[integer]" }
+        { "name": "days", "type": "[boolean]" }
       ],
       "attributes": [
         {
@@ -39,7 +39,7 @@
           "name": "recipes",
           "type": "[nl.iruoy.whocooks.recipes.v0.models.recipe]"
         },
-        { "name": "days", "type": "[integer]" }
+        { "name": "days", "type": "[boolean]" }
       ]
     }
   },
@@ -67,6 +67,8 @@
         {
           "method": "GET",
           "parameters": [
+            { "name": "ids", "type": "[string]", "required": false },
+            { "name": "recipe", "type": "uuid", "required": false },
             { "name": "limit", "type": "integer", "default": 100 },
             { "name": "skip", "type": "integer", "default": 0 }
           ],
