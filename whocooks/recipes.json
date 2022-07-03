@@ -42,12 +42,19 @@
       ]
     },
 
-    "recipe_upserted": {
+    "recipe_inserted": {
       "fields": [
         { "name": "id", "type": "uuid" },
         { "name": "timestamp", "type": "date-time-iso8601" },
-        { "name": "previous", "type": "recipe", "required": false },
-        { "name": "current", "type": "recipe" }
+        { "name": "recipe", "type": "recipe" }
+      ]
+    },
+
+    "recipe_updated": {
+      "fields": [
+        { "name": "id", "type": "uuid" },
+        { "name": "timestamp", "type": "date-time-iso8601" },
+        { "name": "recipe", "type": "recipe" }
       ]
     },
 
@@ -63,7 +70,11 @@
   "unions": {
     "recipe_event": {
       "discriminator": "discriminator",
-      "types": [{ "type": "recipe_upserted" }, { "type": "recipe_deleted" }]
+      "types": [
+        { "type": "recipe_inserted" },
+        { "type": "recipe_updated" },
+        { "type": "recipe_deleted" }
+      ]
     }
   },
 
